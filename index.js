@@ -1,31 +1,39 @@
-module.exports = Phrase;
 
 String.prototype.reverse = function () {
 	return Array.from(this).reverse().join("");
 }
-
+String.prototype.blank = function() {
+	return !!this.match(/^\s+$/);
+};
+Array.prototype.last = function() {
+	return this.slice(-1);
+}
 // Defines a Phrase object,
 function Phrase(content) {	
 	this.content = content;
 
-	// returns lowercase letters, filters nonletters
+	this.processor = function (string) {
+		return string.toLowerCase()
+	}
+
 	this.processedContent = function processedContent() {
-		return this.letters().toLowerCase();
+		// return this.content.toLowerCase();
+		return this.processor(this.content);
 	}
 
-	this.letters = function letters() {
-		const lettersRegEx = /[a-z]/gi;
-		return (this.content.match(lettersRegEx) || []).join("");
+	this.palindrome = function palindrome() {
+		return this.processedContent() === this.processedContent().reverse();
 	}
+}
 
-	// // this.palindrome = function palindrome() {
-	// 	const empty = "";
-	// 	if (this.content === empty) {
-	// 		this.content = "hello";
-	// 		return false;
-	// 	} else {
-	// 	return this.processedContent() === this.processedContent().reverse();		
-	// 	}
+function TranslatedPhrase(content, translation) {
+	this.content = content;
+	this.translation = translation;
+
+	// Returns translation processed for palindrome testing
+	this.processedContent = function processedContent() {
+		// return this.translation.toLowerCase();
+		return this.processor(this.translation);
 	}
-
-
+}
+TranslatedPhrase.prototype = new Phrase();
