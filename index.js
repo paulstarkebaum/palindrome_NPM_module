@@ -12,13 +12,11 @@ Array.prototype.last = function() {
 function Phrase(content) {	
 	this.content = content;
 
-	this.processor = function (string) {
-		return string.toLowerCase()
-	}
-
+this.letters() = function letters() {
+	return this.content; 	// stub return value
+}
 	this.processedContent = function processedContent() {
-		// return this.content.toLowerCase();
-		return this.processor(this.content);
+		return this.content.toLowerCase().letters();
 	}
 
 	this.palindrome = function palindrome() {
@@ -26,14 +24,14 @@ function Phrase(content) {
 	}
 }
 
-function TranslatedPhrase(content, translation) {
-	this.content = content;
-	this.translation = translation;
+// function TranslatedPhrase(content, translation) {
+// 	this.content = content;
+// 	this.translation = translation;
 
-	// Returns translation processed for palindrome testing
-	this.processedContent = function processedContent() {
-		// return this.translation.toLowerCase();
-		return this.processor(this.translation);
-	}
-}
-TranslatedPhrase.prototype = new Phrase();
+// 	// Returns translation processed for palindrome testing
+// 	this.processedContent = function processedContent() {
+// 		// return this.translation.toLowerCase();
+// 		return this.processor(this.translation);
+// 	}
+// }
+// TranslatedPhrase.prototype = new Phrase();
